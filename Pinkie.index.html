@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Gracious 💖</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: radial-gradient(circle, #ff7eb3, #ff4f91);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  overflow: hidden;
+  text-align: center;
+}
+
+/* Gift Screen */
+.gift-box {
+  background: white;
+  padding: 45px;
+  border-radius: 28px;
+  box-shadow: 0 25px 60px rgba(0,0,0,0.25);
+  max-width: 460px;
+  animation: fadeIn 1s ease;
+}
+
+.gift-icon {
+  font-size: 95px;
+  cursor: pointer;
+  animation: bounce 1.5s infinite;
+}
+
+@keyframes bounce {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+
+.tap-text {
+  margin-top: 14px;
+  color: #ff2f6d;
+  font-weight: 600;
+  font-size: 17px;
+}
+
+/* Reveal Card */
+.container {
+  display: none;
+  background: white;
+  padding: 36px;
+  border-radius: 28px;
+  max-width: 520px;
+  box-shadow: 0 25px 60px rgba(0,0,0,0.25);
+  animation: fadeUp 1s ease forwards;
+}
+
+.photo {
+  width: 145px;
+  height: 145px;
+  border-radius: 50%;
+  border: 5px solid #ff4f91;
+  object-fit: cover;
+  margin-bottom: 14px;
+  box-shadow: 0 0 25px #ff4f91;
+  animation: glow 2.2s infinite alternate;
+}
+
+@keyframes glow {
+  from { box-shadow: 0 0 12px #ff4f91; }
+  to { box-shadow: 0 0 36px #ff4f91; }
+}
+
+h1 {
+  color: #ff2f6d;
+}
+
+p {
+  color: #555;
+  font-size: 15.5px;
+  line-height: 1.75;
+}
+
+button {
+  margin-top: 16px;
+  padding: 12px 32px;
+  border-radius: 50px;
+  border: none;
+  background: #ff2f6d;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+button:hover {
+  transform: scale(1.1);
+}
+
+/* Floating Hearts */
+.heart {
+  position: fixed;
+  color: pink;
+  font-size: 18px;
+  animation: floatUp 6s linear infinite;
+}
+
+@keyframes floatUp {
+  from { transform: translateY(100vh); opacity: 1; }
+  to { transform: translateY(-10vh); opacity: 0; }
+}
+
+/* Animations */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(40px) scale(0.9); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+</style>
+</head>
+
+<body>
+
+<!-- Romantic Music -->
+<audio id="music" loop>
+  <source src="https://cdn.pixabay.com/audio/2022/03/23/audio_9f8c43fcb8.mp3" type="audio/mpeg">
+</audio>
+
+<!-- Tap to Open -->
+<div class="gift-box" id="giftBox">
+  <div class="gift-icon" onclick="openGift()">🎁</div>
+  <div class="tap-text">Tap to open your Valentine surprise from Honeysett 💖</div>
+</div>
+
+<!-- Valentine Reveal -->
+<div class="container" id="valentineBox">
+  <img src="https://i.imgur.com/8Km9tLL.jpg" class="photo">
+
+  <h1>Hey Gracious😏💞</h1>
+  <p>
+    You have this quiet charm..you don’t even try, yet you still manage to capture my attention effortlessly o sekopo😌
+    <br><br>
+    The way you smile?  
+    Dangerous. Soft. Addictive.  
+    <br><br>
+    I won’t pressure you…  
+    but I do enjoy teasing you and getting closer😌✨
+  </p>
+
+  <button onclick="showTease()">Continue 💌</button>
+</div>
+
+<script>
+const giftBox = document.getElementById("giftBox");
+const valentineBox = document.getElementById("valentineBox");
+const music = document.getElementById("music");
+
+function openGift() {
+  giftBox.style.display = "none";
+  valentineBox.style.display = "block";
+  music.play();
+  startHearts();
+}
+
+/* Floating Hearts */
+function startHearts() {
+  setInterval(() => {
+    const heart = document.createElement("div");
+    heart.className = "heart";
+    heart.innerHTML = "❤️";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.fontSize = Math.random() * 28 + 12 + "px";
+    document.body.appendChild(heart);
+    setTimeout(() => heart.remove(), 6000);
+  }, 240);
+}
+
+/* Teasing Page */
+function showTease() {
+  valentineBox.innerHTML = `
+    <img src="https://i.imgur.com/8Km9tLL.jpg" class="photo">
+    <h1>You’re Cute When You’re Shy 😄</h1>
+    <p>
+      I like how you pretend not to notice me…  
+      but your reactions always give you away 😏  
+      <br><br>
+      You have this soft, playful energy  
+      that makes me want to tease you — gently 😌  
+      <br><br>
+      Don’t worry… I’ll behave.  
+      (Most of the time 😉)
+    </p>
+    <button onclick="showLikes()">What I Like About You 💖</button>
+  `;
+}
+
+/* Likes Page */
+function showLikes() {
+  valentineBox.innerHTML = `
+    <img src="https://i.imgur.com/8Km9tLL.jpg" class="photo">
+    <h1>Things I Like About You 💕</h1>
+    <p>
+      💗 Your shy smile — unfairly cute  
+      <br>😌 The way you get playful when comfortable  
+      <br>🌸 Your calm, sweet vibe  
+      <br>👀 The way you try to act innocent (but I see you)  
+      <br>✨ The energy you bring when we talk  
+      <br><br>
+      I won’t rush you…  
+      I just like the idea of *us getting closer*💞
+    </p>
+    <button onclick="askDate()">One Last Thing… 😏</button>
+  `;
+}
+
+/* Date Page */
+function askDate() {
+  valentineBox.innerHTML = `
+    <img src="https://i.imgur.com/8Km9tLL.jpg" class="photo">
+    <h1>So Gracious…💖</h1>
+    <p>
+      I was thinking…  
+      something simple, fun and comfortable for you 😌  
+      <br><br>
+      Coffee ☕ • Movie 🎬 • Walk 🌸  
+      <br><br>
+      No pressure… just good vibes and soft flirting 😏  
+      <br><br>
+      Would you like to go on a date with me?
+    </p>
+    <button onclick="dateYes()">Yes 💞</button>
+    <button onclick="dateMaybe()">Let Me Think 👀</button>
+  `;
+}
+
+/* Date Responses */
+function dateYes() {
+  alert("I knew you’d say yes 😌💖 I’ll make it special.");
+}
+
+function dateMaybe() {
+  alert("Take your time… I’ll still be teasing you 😉");
+}
+</script>
+
+</body>
+  </html>
